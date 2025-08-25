@@ -20,7 +20,7 @@ npm install
 
 ### 3. Install Playwright browsers
 ```bash
-npx playwright install --with-deps
+npm run install:browsers
 ```
 
 ### 4. Run the tests
@@ -34,17 +34,17 @@ npm test
 
 - Run all tests in headed mode (see the browser window):
   ```bash
-  npx playwright test --headed
+  npm run headed
   ```
 
 - Run with the Playwright UI mode:
   ```bash
-  npx playwright test --ui
+  npm run test:ui
   ```
 
 - Open the last HTML report:
   ```bash
-  npx playwright show-report
+  npm run report
   ```
 
 ---
@@ -64,7 +64,7 @@ saucedemo-e2e/
 ✅ With this setup, your students only need to:
 1. Clone the repo  
 2. Run `npm install`  
-3. Run `npx playwright install --with-deps`  
+3. Run `npm run install:browsers`  
 4. Run the tests with `npm test`  
 
 That’s it — minimal setup 🎉
