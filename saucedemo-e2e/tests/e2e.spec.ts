@@ -26,4 +26,3 @@ test('verify validations for login fields', async ({ page }) => {
 
     await expect(page.locator('[data-test="error"]')).toBeVisible();
 });
-
