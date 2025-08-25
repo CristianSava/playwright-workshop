@@ -1,0 +1,10 @@
+# Node.js
+node_modules/
+
+# Playwright output
+test-results/
+playwright-report/
+
+# OS / editor junk
+.DS_Store
+.vscode/
