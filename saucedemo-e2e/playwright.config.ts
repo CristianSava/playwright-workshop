@@ -6,6 +6,7 @@ export default defineConfig({
     baseURL: 'https://www.saucedemo.com',
     headless: true,
     trace: 'on-first-retry',
+    testIdAttribute: 'data-test'
   },
   reporter: [['html', { open: 'never' }]],
   projects: [
