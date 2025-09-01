@@ -6,19 +6,31 @@ import { login } from '../helpers/login';
   const randomString : string = 'asd123';
   const baseURL : string = 'https://saucedemo.com';
 
-test('happy path: login, add to cart, checkout', async ({ page }) => {
-  // Login
+test.beforeEach('login', async ({ page }) => {
   await login(page, userName, password);
+});
 
+test('happy path: login, add to cart, checkout', async ({ page }) => {
   // Assert we landed on inventory
-  await expect(page).toHaveURL(/inventory\.html/);
   await expect(page.getByText('Products')).toBeVisible();
+
+  await page.getByTestId('add-to-cart-sauce-labs-backpack').click();
+  await page.getByTestId('shopping-cart-link').click();
+  await page.getByTestId('checkout').click();
+  await page.getByTestId('firstName').fill('Cristian');
+  await page.getByTestId('lastName').fill('Sava');
+  await page.getByTestId('postalCode').fill('12345');
+
+  await page.getByTestId('continue').click();
+
+  await expect(page.getByText('Checkout: Overview')).toBeVisible();
+
+  await page.getByTestId('finish').click();
+
+  await expect(page.getByText('Thank you for your order!')).toBeVisible();
 });
 
 test('assert visibility of text', async ({ page }) => {
-  // Login
-  await login(page, userName, password);
-
   await page.getByTestId('shopping-cart-link').click();
   await expect(page.getByTestId('title')).toHaveText('Your Cart');
 });
