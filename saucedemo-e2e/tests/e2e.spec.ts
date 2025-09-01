@@ -4,6 +4,7 @@ import { login } from '../helpers/login';
   const userName : string = 'standard_user';
   const password : string = 'secret_sauce';
   const randomString : string = 'asd123';
+  const baseURL : string = 'https://saucedemo.com';
 
 test('happy path: login, add to cart, checkout', async ({ page }) => {
   // Login
@@ -23,7 +24,7 @@ test('assert visibility of text', async ({ page }) => {
 });
 
 test('verify validations for login fields', async ({ page }) => {
-  await page.goto('https://saucedemo.com');
+  await page.goto(baseURL);
   await page.locator('#user-name').fill(randomString);
   await page.locator('#password').fill(randomString);
   await page.locator('#login-button').click();
