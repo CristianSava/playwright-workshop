@@ -16,7 +16,9 @@ test('happy path: login, add to cart, checkout', async ({ page }) => {
 
   await page.getByTestId('add-to-cart-sauce-labs-backpack').click();
   await page.getByTestId('shopping-cart-link').click();
+  await page.waitForLoadState('networkidle');
   await page.getByTestId('checkout').click();
+  await page.waitForLoadState('networkidle');
   await page.getByTestId('firstName').fill('Cristian');
   await page.getByTestId('lastName').fill('Sava');
   await page.getByTestId('postalCode').fill('12345');
